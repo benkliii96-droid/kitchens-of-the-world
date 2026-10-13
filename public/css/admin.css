@@ -43,3 +43,43 @@ button {
 .success {
     color: green;
 }
+
+.trashed {
+    background: #f3f3f3;
+    color: #888;
+}
+
+fieldset {
+    margin-bottom: 15px;
+}
+
+.filters select,
+.filters button {
+    margin-right: 5px;
+}
+
+.pagination a,
+.pagination span,
+.pagination b {
+    margin-right: 6px;
+}
+
+.trashed {
+    background: #f3f3f3;
+    color: #888;
+}
+
+.filters select,
+.filters button {
+    margin-right: 5px;
+}
+
+.pagination a,
+.pagination b,
+.pagination span {
+    margin-right: 8px;
+}
+
+fieldset {
+    margin-bottom: 15px;
+}

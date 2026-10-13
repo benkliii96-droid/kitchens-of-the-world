@@ -4,7 +4,7 @@
         <option value="">— выберите —</option>
         @foreach ($recipes as $recipe)
             <option value="{{ $recipe->id }}"
-                @selected(old('recipe_id', $step->recipe_id ?? '') == $recipe->id)>
+                @selected(old('recipe_id', $step->recipe_id ?? request('recipe_id')) == $recipe->id)>
                 {{ $recipe->title }}
             </option>
         @endforeach

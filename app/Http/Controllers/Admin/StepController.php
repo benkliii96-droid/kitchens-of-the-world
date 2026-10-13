@@ -77,6 +77,10 @@ class StepController extends Controller
 
     public function destroy(Step $step)
     {
+        if ($step->recipe && $step->recipe->steps()->count() <= 1) {
+            return back()->with('error', 'У рецепта должен остаться хотя бы один шаг');
+        }
+
         if ($step->image) {
             Storage::disk('public')->delete($step->image);
         }
