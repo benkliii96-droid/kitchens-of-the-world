@@ -31,11 +31,36 @@ class Purchase extends Model
 
     public function recipe(): BelongsTo
     {
-        return $this->belongsTo(Recipe::class);
+        return $this->belongsTo(Recipe::class)->withTrashed();
     }
 
     public function stepProgress(): HasMany
     {
         return $this->hasMany(StepProgress::class);
+    }
+
+    public function refreshExpiredStatus(): void
+    {
+        if ($this->status === self::STATUS_PENDING
+            && $this->expires_at
+            && $this->expires_at->isPast()
+        ) {
+            $this->update(['status' => self::STATUS_EXPIRED]);
+        }
+    }
+
+    public function statusLabel(): string
+    {
+        return match ($this->status) {
+            self::STATUS_PAID => 'оплачено',
+            self::STATUS_FAILED => 'ошибка оплаты',
+            self::STATUS_EXPIRED => 'истекло время на оплату',
+            default => 'не оплачено',
+        };
+    }
+
+    public function canDelete(): bool
+    {
+        return in_array($this->status, [self::STATUS_FAILED, self::STATUS_EXPIRED], true);
     }
 }

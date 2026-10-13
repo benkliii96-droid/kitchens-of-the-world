@@ -12,6 +12,7 @@
             <a href="{{ route('admin.categories.index') }}">Категории</a>
             <a href="{{ route('admin.ingredients.index') }}">Ингредиенты</a>
             <a href="{{ route('admin.steps.index') }}">Шаги</a>
+            <a href="{{ route('admin.purchases.index') }}">Заказы</a>
         </p>
 
         <form action="{{ route('admin.logout') }}" method="POST">

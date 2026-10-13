@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IngredientController;
+use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\StepController;
 use Illuminate\Support\Facades\Route;
@@ -35,5 +36,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('ingredients', IngredientController::class);
         Route::resource('steps', StepController::class);
+
+        Route::get('/purchases', [PurchaseController::class, 'index'])->name('purchases.index');
+        Route::delete('/purchases/{purchase}', [PurchaseController::class, 'destroy'])->name('purchases.destroy');
     });
 });
+
