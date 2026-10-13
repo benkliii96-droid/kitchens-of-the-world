@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\IngredientController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,5 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         })->name('recipes.index');
 
         Route::resource('categories', CategoryController::class);
+        Route::resource('ingredients', IngredientController::class);
     });
 });
+

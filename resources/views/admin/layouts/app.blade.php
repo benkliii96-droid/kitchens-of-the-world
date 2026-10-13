@@ -10,7 +10,9 @@
         <p>
             <a href="{{ route('admin.recipes.index') }}">Рецепты</a>
             <a href="{{ route('admin.categories.index') }}">Категории</a>
+            <a href="{{ route('admin.ingredients.index') }}">Ингредиенты</a>
         </p>
+
         <form action="{{ route('admin.logout') }}" method="POST">
             @csrf
             <button type="submit">Выйти</button>
