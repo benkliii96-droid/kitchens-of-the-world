@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Админ-панель')</title>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
     @auth
         <p>
             <a href="{{ route('admin.recipes.index') }}">Рецепты</a>
+            <a href="{{ route('admin.categories.index') }}">Категории</a>
         </p>
         <form action="{{ route('admin.logout') }}" method="POST">
             @csrf
@@ -17,7 +19,7 @@
     @endauth
 
     @if (session('success'))
-        <p>{{ session('success') }}</p>
+        <p class="success">{{ session('success') }}</p>
     @endif
 
     @if (session('error'))
