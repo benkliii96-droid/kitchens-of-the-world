@@ -51,6 +51,14 @@ class RecipeController extends Controller
             }
         }
 
+        if (!empty($filters['price_min'])) {
+            $query->where('price', '>=', $filters['price_min']);
+        }
+
+        if (!empty($filters['price_max'])) {
+            $query->where('price', '<=', $filters['price_max']);
+        }
+
         $sort = $filters['sort'] ?? 'newest_desc';
 
         if ($sort === 'newest_asc') {

@@ -19,6 +19,8 @@ class RecipeFilterRequest extends FormRequest
             'time' => ['nullable', Rule::in(['to15', '60-120', 'from120'])],
             'category_id' => ['nullable', 'integer'],
             'price' => ['nullable', Rule::in(['free', 'paid'])],
+            'price_min' => ['nullable', 'numeric', 'min:0'],
+            'price_max' => ['nullable', 'numeric', 'min:0'],
             'sort' => ['nullable', Rule::in(['newest_desc', 'newest_asc', 'time_asc', 'time_desc'])],
         ];
     }

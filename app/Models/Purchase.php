@@ -63,4 +63,16 @@ class Purchase extends Model
     {
         return in_array($this->status, [self::STATUS_FAILED, self::STATUS_EXPIRED], true);
     }
+
+    public function paymentLink(): string
+    {
+        return config('services.payment.url') . '?order_id=' . $this->id . '&url=' . url('/recepts/webhook');
+    }
+
+    public static function findByHash(string $hash): ?self
+    {
+        return self::query()->lazyById()->first(function (self $purchase) use ($hash) {
+            return strcasecmp(md5((string) $purchase->id), $hash) === 0;
+        });
+    }
 }

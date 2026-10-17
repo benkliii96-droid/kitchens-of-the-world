@@ -1,85 +1,173 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+* {
+    box-sizing: border-box;
 }
 
-header,
-nav {
-    margin-bottom: 15px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #222;
+    background: #f5f5f7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background: #8b1e3f;
+    color: #fff;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 60px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    gap: 5px;
+    flex: 1;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.nav a:hover,
+.nav a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.main {
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 a {
+    color: #8b1e3f;
     margin-right: 10px;
 }
 
 table {
+    width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    background: #fff;
 }
 
 th,
 td {
-    border: 1px solid #333;
-    padding: 6px 10px;
+    border: 1px solid #ddd;
+    padding: 8px 10px;
     text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #eee;
+}
+
+td form {
+    display: inline-block;
 }
 
 input,
 select,
-textarea,
-button {
-    margin-top: 4px;
-    margin-bottom: 4px;
+textarea {
+    margin: 4px 0;
+    padding: 6px 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font: inherit;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+}
+
+button,
+.btn {
+    margin: 4px 0;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #8b1e3f;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn--light {
+    background: #fff;
+    color: #8b1e3f;
 }
 
 .is-invalid {
-    border-color: red;
+    border: 2px solid #d00;
+    background: #fff5f5;
 }
 
-.invalid-feedback, .error {
-    color: red;
+.invalid-feedback,
+.error {
+    color: #d00;
 }
 
 .success {
-    color: green;
+    color: #187a2f;
+}
+
+.alert {
+    padding: 10px 14px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid currentColor;
 }
 
 .trashed {
-    background: #f3f3f3;
+    background: #f0f0f0;
     color: #888;
 }
 
 fieldset {
     margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
 }
 
-.filters select,
-.filters button {
-    margin-right: 5px;
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-.pagination a,
-.pagination span,
-.pagination b {
-    margin-right: 6px;
-}
-
-.trashed {
-    background: #f3f3f3;
-    color: #888;
-}
-
-.filters select,
-.filters button {
-    margin-right: 5px;
+.pagination {
+    margin-top: 15px;
 }
 
 .pagination a,
 .pagination b,
 .pagination span {
     margin-right: 8px;
-}
-
-fieldset {
-    margin-bottom: 15px;
 }

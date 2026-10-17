@@ -46,6 +46,10 @@ class IngredientController extends Controller
 
     public function destroy(Ingredient $ingredient)
     {
+        if ($ingredient->recipes()->withTrashed()->exists()) {
+            return back()->with('error', 'Нельзя удалить ингредиент, он используется в рецептах');
+        }
+
         $ingredient->delete();
 
         return redirect()->route('admin.ingredients.index')->with('success', 'Ингредиент удалён');

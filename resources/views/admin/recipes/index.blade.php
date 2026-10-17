@@ -35,11 +35,16 @@
             <option value="paid" @selected(request('price') === 'paid')>Платные</option>
         </select>
 
+        <input type="number" name="price_min" min="0" step="0.01" value="{{ request('price_min') }}"
+               placeholder="Цена от" title="0 — без ограничений">
+        <input type="number" name="price_max" min="0" step="0.01" value="{{ request('price_max') }}"
+               placeholder="Цена до" title="0 — без ограничений">
+
         <select name="sort">
-            <option value="newest_desc" @selected($sort === 'newest_desc')>По новизне ▼</option>
-            <option value="newest_asc" @selected($sort === 'newest_asc')>По новизне ▲</option>
-            <option value="time_asc" @selected($sort === 'time_asc')>По времени ▲</option>
-            <option value="time_desc" @selected($sort === 'time_desc')>По времени ▼</option>
+            <option value="newest_desc" @selected($sort === 'newest_desc')>По новизне 🔽</option>
+            <option value="newest_asc" @selected($sort === 'newest_asc')>По новизне 🔼</option>
+            <option value="time_asc" @selected($sort === 'time_asc')>По времени приготовления 🔼</option>
+            <option value="time_desc" @selected($sort === 'time_desc')>По времени приготовления 🔽</option>
         </select>
 
         <button type="submit">Применить</button>

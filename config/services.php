@@ -28,6 +28,11 @@ return [
         'key' => env('RESEND_KEY'),
     ],
 
+    'payment' => [
+        'url' => env('PAYMENT_URL', 'http://SITE.ru/pay/'),
+        'expires_minutes' => 1,
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
