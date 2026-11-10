@@ -29,27 +29,28 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->shouldRenderJsonWhen(function (Request $request) {
-            return $request->is('recepts/*') || $request->expectsJson();
+            return $request->is('recepts', 'recepts/*') || $request->expectsJson();
         });
 
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
-            if ($request->is('recepts/*')) {
+            if ($request->is('recepts', 'recepts/*')) {
                 return response()->json(['message' => 'Not found'], 404);
             }
         });
 
         $exceptions->render(function (AuthenticationException $e, Request $request) {
-            if ($request->is('recepts/*')) {
+            if ($request->is('recepts', 'recepts/*')) {
                 return response()->json(['message' => 'Unauthenticated'], 401);
             }
         });
 
         $exceptions->render(function (ValidationException $e, Request $request) {
-            if ($request->is('recepts/*')) {
+            if ($request->is('recepts', 'recepts/*')) {
                 return response()->json([
                     'message' => 'Invalid fields',
                     'errors' => $e->errors(),
                 ], 422);
             }
         });
+
     })->create();

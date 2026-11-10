@@ -13,9 +13,6 @@ Route::post('/auth', [AuthController::class, 'auth']);
 Route::post('/webhook', WebhookController::class);
 
 Route::middleware(['auth:sanctum', 'user'])->group(function () {
-    Route::get('/recepts', [RecipeController::class, 'index']);
-    Route::get('/recepts/{id}', [RecipeController::class, 'show'])->whereNumber('id');
-
     Route::get('/favorites', [FavoriteController::class, 'index']);
     Route::post('/favorites', [FavoriteController::class, 'store']);
     Route::delete('/favorites/{recipeId}', [FavoriteController::class, 'destroy'])->whereNumber('recipeId');
@@ -26,4 +23,8 @@ Route::middleware(['auth:sanctum', 'user'])->group(function () {
     Route::get('/purchases/{id}/progress', [PurchaseController::class, 'progress'])->whereNumber('id');
 
     Route::post('/steps/{stepId}/complete', [StepController::class, 'complete'])->whereNumber('stepId');
+
+    Route::get('/', [RecipeController::class, 'index']);
+    Route::get('/{id}', [RecipeController::class, 'show'])->whereNumber('id');
 });
+

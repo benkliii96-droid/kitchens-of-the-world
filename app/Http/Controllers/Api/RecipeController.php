@@ -32,11 +32,11 @@ class RecipeController extends Controller
             $query->where('cooking_time', '<=', $filters['time_max']);
         }
 
-        if (!empty($filters['price_min'])) {
+        if (array_key_exists('price_min', $filters) && $filters['price_min'] !== null) {
             $query->where('price', '>=', $filters['price_min']);
         }
 
-        if (!empty($filters['price_max'])) {
+        if (array_key_exists('price_max', $filters) && $filters['price_max'] !== null) {
             $query->where('price', '<=', $filters['price_max']);
         }
 
